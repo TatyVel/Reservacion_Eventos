@@ -1,0 +1,93 @@
+﻿@model  List <ReservacionEventosUSAM.Models.CRUD.MostrarTipoEstado >
+@{
+    ViewBag.Title = "ConsultarTipoEstado";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>panel de administración</h2>
+<div class="card text-center">
+    <div class="card-header">
+        <div class="alert alert-info" role="alert">
+            <b><h3>Panel de Administración</h3></b>
+        </div>
+
+        <ul class="nav nav-tabs card-header-tabs">
+            <li class="nav-item">
+                <a class="nav-link" aria-current="true" href="@Url.Content("~/Eventos/ConsultarEventos")">Eventos <i class="bi bi-calendar2-event-fill"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Content("~/Lugares/ConsultarLugares")">Lugares <i class="bi bi-geo-alt-fill"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="@Url.Content("~/Usuarios/ConsultarUsuarios")">Usuarios <i class="bi bi-people-fill"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" href="@Url.Content("~/Tipo_Estado/ConsultarTipoEstado")">Tipo estado<i class="bi bi-person-bounding-box"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Content("~/RolOpera/ConsultarRolOpera")">Rol opera<i class="bi bi-person-bounding-box"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Content("~/Operacion/ConsultarOperacion")">operaciones<i class="bi bi-person-bounding-box"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Content("~/Modulos/ConsultarModulos")">Modulos<i class="bi bi-person-bounding-box"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Content("~/Tipo_evento/ConsultarTipoEvento")">Tipo evento <i class="bi bi-calendar2-event"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Content("~/Tipo_persona/ConsultarTipoPersona")">Tipo persona <i class="bi bi-person-bounding-box"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="@Url.Content("~/PersonaEventos/ConsultarPersonaEvento")">Persona Eventos<i class="bi bi-person-bounding-box"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Content("~/Registros/ConsultarRegistro")">Registros <i class="bi bi-person-lines-fill"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="@Url.Content("~/Roles/ConsultarRoles")">Roles <i class="bi bi-toggle2-on"></i></a>
+            </li>
+
+        </ul>
+    </div>
+
+    <div class="card-body">
+        <br />
+
+        <div class="table-responsive">
+            <!--Boton de agregar-->
+            <button class="btn btn-info float-start text-light" onclick="document.location.href='@Url.Content("~/TipoEstado/AgregarTipoEstado")'">Nuevo Tipo de Estado</button>
+            <br />
+            <!-- Aquí va la tabla ¡No olviden poner el id a la tabla!-->
+            <table id="table" class="table">
+                <thead>
+                   
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    @foreach (var e in Model)
+                    {
+                    <tr>
+                        <th scope="row">@e.cod_estado</th>
+                        <td>@e.estado</td>
+                        <td>
+                            <a class = "btn btn-primary" onclick="document.location.href='@Url.Content("~/TipoEstado/ActualizarTipoEstado/"+ e.cod_estado)'"><i class="bi bi-pencil-square"></i></a>
+                            <a class="btn btn-danger" onclick="document.location.href='@Url.Content("~/TipoEstado/BorrarE/"+ e.cod_estado)'"><i class="bi bi-trash"></i></a>
+                        </td>
+                    </tr>  
+
+                    }
+                </tbody>
+            </table>
+            <!-- Aquí termina la tabla -->
+        </div>
+
+    </div>
+</div>
+
